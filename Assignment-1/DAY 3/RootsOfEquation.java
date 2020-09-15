@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.Math;
 
 // custom datatype to return two values from a function
@@ -50,8 +53,12 @@ class QuadraticEquation {
 }
 
 public class RootsOfEquation {
-    public static void main(String[] args) {
-        int a = Integer.parseInt(args[0]), b = Integer.parseInt(args[1]), c = Integer.parseInt(args[2]);
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter two numbers: ");
+        int a = Integer.parseInt(buf.readLine());
+        int b = Integer.parseInt(buf.readLine());
+        int c = Integer.parseInt(buf.readLine());
         QuadraticEquation qe = new QuadraticEquation(a, b, c);
         int type = qe.typeOfRoots();
         if (type == -1) {
