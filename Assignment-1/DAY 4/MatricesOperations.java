@@ -35,13 +35,30 @@ class Matrix {
     }
 
     // matrix subtraction
-    int[][] subtraction(int[][] mat1, int[][] mat2) {
-        return new int[5][5];
+    int[][] subtraction(int[][] mat1, int[][] mat2) throws Exception {
+        if ((mat1.length != mat2.length) || (mat1[0].length != mat2[0].length))
+            throw new Exception("Matrix dimension needs to be same to perform subtraction");
+        int[][] dif = new int[mat1.length][mat1[0].length];
+        for (int i = 0; i < mat1.length; i++)
+            for (int j = 0; j < mat1[i].length; j++)
+                dif[i][j] = mat1[i][j] - mat2[i][j];
+        return dif;
     }
 
     // matrix multiplication
-    int[][] multiplication(int[][] mat1, int[][] mat2) {
-        return new int[5][5];
+    int[][] multiplication(int[][] mat1, int[][] mat2) throws Exception {
+        if ((mat1[0].length != mat2.length))
+            throw new Exception("Number of columns in first matrix must be equal to number of rows in second matrix");
+        int[][] mul = new int[mat1.length][mat2[0].length];
+
+        for (int k = 0; k < mat1.length; k++)
+            for (int i = 0; i < mat2[0].length; i++) {
+                mul[k][i] = 0;
+                for (int j = 0; j < mat2.length; j++)
+                    mul[k][i] += mat1[k][j] * mat2[j][i];
+            }
+
+        return mul;
     }
 }
 
@@ -49,15 +66,29 @@ public class MatricesOperations {
     public static void main(String[] args) throws IOException {
         System.out.println("IMPORTANT: Enter the elements as space seperated integers and press enter after each row");
         Matrix obj = new Matrix();
-        int[][] mat1, mat2, sumMat;
+        int[][] mat1, mat2, resMat;
         try {
             mat1 = obj.input(1);
             mat2 = obj.input(2);
-            sumMat = obj.addition(mat1, mat2);
+            resMat = obj.addition(mat1, mat2);
             System.out.println("Sum of two matrices are:");
-            for (int i = 0; i < sumMat.length; i++) {
-                for (int j = 0; j < sumMat[i].length; j++)
-                    System.out.print(sumMat[i][j] + " ");
+            for (int i = 0; i < resMat.length; i++) {
+                for (int j = 0; j < resMat[i].length; j++)
+                    System.out.print(resMat[i][j] + " ");
+                System.out.println();
+            }
+            resMat = obj.subtraction(mat1, mat2);
+            System.out.println("Subtraction of two matrices are:");
+            for (int i = 0; i < resMat.length; i++) {
+                for (int j = 0; j < resMat[i].length; j++)
+                    System.out.print(resMat[i][j] + " ");
+                System.out.println();
+            }
+            resMat = obj.multiplication(mat1, mat2);
+            System.out.println("Dot product of two matrices are:");
+            for (int i = 0; i < resMat.length; i++) {
+                for (int j = 0; j < resMat[i].length; j++)
+                    System.out.print(resMat[i][j] + " ");
                 System.out.println();
             }
         } catch (Exception e) {
