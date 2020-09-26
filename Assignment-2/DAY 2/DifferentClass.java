@@ -1,4 +1,4 @@
-public class First {
+class First {
     int x;
 
     First(int x) {
