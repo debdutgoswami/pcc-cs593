@@ -5,7 +5,7 @@ class PayOutOfBoundsException extends Exception {
     }
 
     public String toString() {
-        return ("Monthly Salary is less than 10,000/-, found " + this.expected);
+        return ("UserDefinedException.PayOutOfBoundException: Monthly Salary is less than 10,000/-, found " + this.expected);
     }
 }
 
