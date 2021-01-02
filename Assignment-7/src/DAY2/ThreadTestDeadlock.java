@@ -51,9 +51,9 @@ public class ThreadTestDeadlock {
                 }
                 System.out.println("Thread 2: Waiting for object 1...");
 
-                synchronized (object1) {
-                    System.out.println("Thread 2: Holding objects 1 & 2...");
-                }
+//                synchronized (object1) {
+//                    System.out.println("Thread 2: Holding objects 1 & 2...");
+//                }
             }
             System.out.println("Thread2 ended..");
         }
