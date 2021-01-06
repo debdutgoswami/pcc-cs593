@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ## Usage:
-## `./create-assignment.sh <directory> <target>`
+## `./create-assignment.sh <directory> <target> <extension>`
 ## Example:
-## `./create-assignment.sh Assignment-1/Day-1 23_Hello_world_A7`
+## `./create-assignment.sh Assignment-1/Day-1 23_Hello_world_A7 java`
 
 directory=$1
 target=$2
